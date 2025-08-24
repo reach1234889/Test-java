@@ -1,0 +1,132 @@
+
+#Get your license on key on the discord.gg/pikzstudios
+License-Key: PLEASE INSERT YOUR LICENSE KEY
+
+Currency: "Shard"
+
+#Command name - this is used when you want to change the name of the currency
+Command: "shard"
+
+#Whether you want /pay enabled or disabled
+pay-enabled: true
+
+#
+# Put the names of the worldguard regions you want the shard to be gained in.
+#
+AFK-Regions:
+  - test
+
+AFK-Teleport:
+  enable-commands: false
+  command-name: "afk"
+  countdown-time: 5
+  use-action-bar: true
+  use-chat: true
+
+Features:
+  Shop: true
+  Leaderboard: true
+
+#
+# Delay between every shard generation
+#
+Shard-Delay: 15
+
+Gen-Nodes: # Gives extra shard in every shard generation
+  extra_two: 2 # Permission node is shard.gennodes.extra_two
+  extra_three: 3 # Permission node is shard.gennodes.extra_three
+#
+# Shards to give for every kill
+#
+Shard-Kill: 15 #set 0 to disable
+
+Kill-Nodes: # Gives extra shards in every kill
+  prevent_abuse: true # If you kill someone you've killed before, you don't get any shards.
+  extra_ten: 10 # Permission node is shard.killnodes.extra_ten
+  extra_twenty: 20 # Permission node is shard.killnodes.extra_twenty
+
+Leaderboard:
+  Refresh-Rate: 60 # The refresh rate is in second
+  Max-Player: 45
+  Title: '&d%currency% Leaderboard &8(&7%page%/%max%&8)'
+  Inventory-Rows: 6
+  Player-Display-Name: '&5&l%player%'
+  Player-Lore:
+    - '&7'
+    - '&7%currency%: &d%shard%'
+  Items:
+    Current-Page:
+      material: SPECTRAL_ARROW
+      name: '&eCurrent Page'
+      lore:
+        - '&fThis is page %page%.'
+      nbt: actualPage # DON'T TOUCH
+      symbol: a # DON'T TOUCH
+    Next-Page:
+      material: PLAYER_HEAD
+      name: '&eNext Page'
+      lore:
+        - '&7Click to navigate.'
+      head-texture: https://textures.minecraft.net/texture/d15ce8448acbd8e60c9b6e93f4062a203c434aec50680d9f0d028b7c09125738
+      nbt: nextPage # DON'T TOUCH
+      symbol: n # DON'T TOUCH
+    Previous-Page:
+      material: PLAYER_HEAD
+      name: '&ePrevious Page'
+      lore:
+        - '&7Click to navigate.'
+      head-texture: https://textures.minecraft.net/texture/39617022cf9a1d5a8606c06e3894c310874dfad27690793d6756901658c6e064
+      nbt: previousPage # DON'T TOUCH
+      symbol: p # DON'T TOUCH
+
+#
+# Configure this part if you want to change the database type.
+#
+Database:
+  Type: SQLite # You can use MySQL too
+  MySQL:
+    host: localhost
+    user: root
+    database: shards
+    password: ''
+    port: 3306
+    max-pool: 15
+    use-ssl: false
+
+
+#
+# Shop configuration
+#
+
+Shop:
+  Title: '&d%currency% Shop | %currency%: %shards%'
+  Inventory-Rows: 3
+  #
+  # Easy to use, if you add more rows just add one more line to the disposition
+  #
+  # Symbol means the character you will use in the disposition
+  # The symbol "-" means empty
+  Disposition:
+    - '---------'
+    - --12345--
+    - ----b----
+  Items:
+    go-back:
+      material: BARRIER
+      name: '&cClose'
+      command: CLOSE
+      lore:
+        - '&7Click to close the shop.'
+      symbol: b
+    crate-key:
+      material: TRIPWIRE_HOOK
+      glowing: true
+      name: '&a&lSpecial Key'
+      symbol: 1
+      price: 5
+      command: give %player% TRIPWIRE_HOOK 1 # command is executed by console
+      lore:
+        - '&7This key is so cool fr.'
+        - "&7Missing %currency%: %missing%"
+        - ''
+        - '&7This item costs &d5 Shards&7.'
